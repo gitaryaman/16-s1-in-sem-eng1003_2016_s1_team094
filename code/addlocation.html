@@ -12,55 +12,45 @@
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="shortcut icon" sizes="196x196" href="images/icon.png" />
         <link rel="apple-touch-icon-precomposed" href="images/icon.png" />
+        <!-- STUFF WE ADDED -->
     </head>
     
     <body>
+        
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-          <header class="mdl-layout__header">
-              <button onclick="location.href = 'index.html';" class="mdl-layout-icon mdl-button mdl-js-button mdl-button--icon"> 
-                <i class="material-icons">arrow_back</i>
-              </button>
-            <div class="mdl-layout__header-row">
-              <span class="mdl-layout-title" id="headerBarTitle">Add Location</span>
-            </div>
-          </header>
-          <main class="mdl-layout__content">
-            <div class="content-grid mdl-grid">
-              <div class="mdl-cell">
-                <!--   Main page content here:   -->  
-                  
+            
+            <header class="mdl-layout__header">
+                
+                <button onclick="location.href = 'index.html';" class="mdl-layout-icon mdl-button mdl-js-button mdl-button--icon"> 
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                
+                <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title" id="headerBarTitle">Add Location</span>
+                </div>
+                
+            </header>
+            
+            <main class="mdl-layout__content">
+                
+                <div class="content-grid mdl-grid">
+                    
+                    <div class="mdl-cell">
+                        
+                        <!--   Main page content here:   --> 
+                        <input id="pac-input" class='controls' type="text" placeholder="Search Box">
+                        <div id="map-div">
+                            
+                        </div>
 
-<form action="#">
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="sample3">
-    <label class="mdl-textfield__label" for="sample3">Type Location...</label>
-      
-  </div>
-</form>
-                  
-                  
-<style>
-      #map {
-        width: 500px;
-        height: 400px;
-      }
-    </style>
-  </head>
-  <body>
-      <input id="pac-input" class='controls' type="text" placeholder="Search Box">
-    <div id="map"></div>
-
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-            async defer></script>
-      
-      
-
-
+                    </div>
+                   
+                </div>
+            </main>    
+        </div>
 
         <!--   JavaScript files:   -->
         <script src="js/locationWeatherCache.js"></script>
         <script src="js/addlocationPage.js"></script>
-       
-
     </body>
 </html>
