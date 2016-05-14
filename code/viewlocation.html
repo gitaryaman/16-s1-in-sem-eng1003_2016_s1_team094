@@ -23,12 +23,13 @@
                 <i class="material-icons">arrow_back</i>
             </button>
 
+
+
             <div class="mdl-layout__header-row">
                 <span class="mdl-layout-title" id="headerBarTitle">Nickname</span>
+
             </div>
-            <button onclick="youAreHere();" class="mdl-button mdl-js-button mdl-button--icon">
-                <i class="material-icons">my_location</i>
-            </button>
+
 
         </header>
 
@@ -50,79 +51,44 @@
                         <meta name="mobile-web-app-capable" content="yes" />
                         <style>
                             #map {
-                                width: 100%;
+                                width: 500px;
                                 /* view height */
-                                height: calc(40vh);
+                                height: 400px;
                             }
                         </style>
                     </head>
 
 
-                    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-                        <div class="mdl-layout__header-row">
-                            <div class="mdl-layout-spacer"></div>
 
-                        </div>
-                        </header>
-
-                        <main class="mdl-layout__content">
-                            <!-- Main page content here: -->
-                            <div id="map"></div>
-                            <p><br>Date: 
+                    <main class="mdl-layout__content">
+                        <!-- Main page content here: -->
+                        <div id="map"></div>
+                        <p>
+                            Date:
                             <!-- Slider with Starting Value -->
-<input class="mdl-slider mdl-js-slider" type="range"
-  min="0" max="100" value="50" tabindex="0"></br>
-                            
-                            <br>Current Conditions:</br>
-                            
-                        <br>Maximum Temperature:</br>
-                                
-                    <br>Minimum Temperature:</br>
-                               
-                <br>Humidity:</br>
-                               
-            <br>Wind Speed:</br></p>
+                            <p style="width:200px">
+                                <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1">
+                            </p>
+
+
+                            Current Conditions:
+
+                            <br>Maximum Temperature:
+
+                            <br>Minimum Temperature:
+
+                            <br>Humidity:
+
+                            <br>Wind Speed:
+                        </p>
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                          Button
+                            Remove This Location
                         </button>
 
-                        </main>
-                    </div>
+                    </main>
+                </div>
 
-                    <!-- JavaScript files: -->
-                    <script>
-                        var map;
-                        var infoWindow;
-
-                        function initMap() {
-                            // Display a map, centred on Monash Clayton (needs to be centered on desired location)
-                            var selectedLocation = {
-                                lat: -37.912
-                                , lng: 145.131
-                            };
-                            map = new google.maps.Map(document.getElementById("map"), {
-                                zoom: 16
-                                , center: selectedLocation
-                            });
-                            infowindow = new google.maps.InfoWindow;
-                        }
-
-                        function youAreHere() {
-                            var currentPosition = {
-                                lat: -37.9131547
-                                , lng: 145.1335457
-                            };
-                            var marker = new google.maps.Marker({
-                                position: currentPosition
-                                , map: map
-                            });
-                            infowindow.setContent("You are here!");
-                            infowindow.open(map, marker);
-                            map.panTo(currentPosition);
-                            map.setZoom(18)
-                        }
-                    </script>
-                    <script src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap" async defer></script>
+                <script src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap" async defer></script>
 </body>
 
 </html>
