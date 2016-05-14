@@ -64,26 +64,27 @@
                         <!-- Main page content here: -->
                         <div id="map"></div>
                         <p>
-                            Date:
+                            <br>Date:
                             <!-- Slider with Starting Value -->
-                            <p style="width:200px">
+                            <p style="width:400px">
                                 <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1">
                             </p>
 
 
-                            Current Conditions:
+                            Current Conditions: </br>
 
-                            <br>Maximum Temperature:
+                            <br>Maximum Temperature: &#8451</br>
 
-                            <br>Minimum Temperature:
+                            <br>Minimum Temperature: &#8451</br>
 
-                            <br>Humidity:
+                            <br>Current Humidity: %</br>
 
-                            <br>Wind Speed:
+                            <br>Current Wind Speed: km/h
                         </p>
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                            Remove This Location
-                        </button>
+                      
+                        <div>
+                            <button id="Remove This Location" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="locationWeatherCache.removeLocationAtIndex(INDEX)">Remove This Location</button>
+                        </div>
 
                     </main>
                 </div>
