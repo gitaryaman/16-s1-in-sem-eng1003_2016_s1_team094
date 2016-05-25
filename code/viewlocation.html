@@ -51,9 +51,8 @@
                         <meta name="mobile-web-app-capable" content="yes" />
                         <style>
                             #map {
-                                width: 500px;
-                                /* view height */
-                                height: 400px;
+                                width: 325px;
+                                height: 300px;
                             }
                         </style>
                     </head>
@@ -62,33 +61,35 @@
 
                     <main class="mdl-layout__content">
                         <!-- Main page content here: -->
+                        <body>
                         <div id="map"></div>
                         <p>
-                            <br>Date:
+                            <div id="date">Date:
+                            </div>
+                            <br>
                             <!-- Slider with Starting Value -->
-                            <p style="width:400px">
-                                <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1">
+                            <p style="width:100%">
+                                <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1" oninput="sliderCallback(this.value); getWeather(value)">
                             </p>
-
-
-                            Current Conditions: </br>
-
-                            <br>Maximum Temperature: &#8451</br>
-
-                            <br>Minimum Temperature: &#8451</br>
-
-                            <br>Current Humidity: %</br>
-
-                            <br>Current Wind Speed: km/h
-                        </p>
-                      
-                        <div>
-                            <button id="Remove This Location" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="locationWeatherCache.removeLocationAtIndex(INDEX)">Remove This Location</button>
-                        </div>
+                            <script>"updateDOM()"
+                            </script>
+                            <div id="currentConditions">Current Conditions:</div>
+                            <br>
+                            <div id="maxTemp">Maximum Temperature: &#8451</div>
+                            <br>
+                            <div id="minTemp">Minimum Temperature: &#8451</div>
+                            <br>
+                            <div id="humidity">Current Humidity: %</div>
+                            <br>
+                            <div id="windSpeed">Current Wind Speed: km/h
+                            </div>
+                            <br>
+                            <div>
+                                <button id="Remove This Location" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="location.href = 'index.html';removeLocationButton()">Remove This Location</button>
+                            </div>
 
                     </main>
                 </div>
-
                 <script src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap" async defer></script>
 </body>
 
@@ -101,7 +102,7 @@
 
 <!--   JavaScript files:   -->
 <script src="js/locationWeatherCache.js"></script>
-<script src="js/viewLocationPage.js"></script>
+<script src="js/viewLocationPageBeforeMapModification.js"></script>
 </body>
 
 </html>
