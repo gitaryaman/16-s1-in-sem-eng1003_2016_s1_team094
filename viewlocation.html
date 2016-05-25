@@ -51,8 +51,8 @@
                         <meta name="mobile-web-app-capable" content="yes" />
                         <style>
                             #map {
-                                width: 500px;
-                                height: 400px;
+                                width: 325px;
+                                height: 300px;
                             }
                         </style>
                     </head>
@@ -68,8 +68,8 @@
                             </div>
                             <br>
                             <!-- Slider with Starting Value -->
-                            <p style="width:400px">
-                                <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1" oninput="sliderCallback(this.value); forecastAPIDate(this.value)">
+                            <p style="width:100%">
+                                <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1" oninput="sliderCallback(this.value); getWeather(value)">
                             </p>
                             <script>"updateDOM()"
                             </script>
@@ -85,44 +85,11 @@
                             </div>
                             <br>
                             <div>
-                                <button id="Remove This Location" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="location.href = 'index.html';locationWeatherCache.removeLocationAtIndex(INDEX)">Remove This Location</button>
+                                <button id="Remove This Location" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" onClick="location.href = 'index.html';removeLocationButton()">Remove This Location</button>
                             </div>
 
                     </main>
                 </div>
-                <script>
-                    var map;
-                    var infoWindow;
-
-                    function initMap() {
-                        // Display a map, centred on Monash Clayton.
-                        var monashClaytonPosition = {
-                            lat: -37.912
-                            , lng: 145.131
-                        };
-                        map = new google.maps.Map(document.getElementById("map"), {
-                            zoom: 16
-                            , center: monashClaytonPosition
-                        });
-                        infowindow = new google.maps.InfoWindow;
-                    }
-
-                    function youAreHere() {
-                        var lecturePosition = {
-                            lat: -37.9131547
-                            , lng: 145.1335457
-                        };
-                        var marker = new google.maps.Marker({
-                            position: lecturePosition
-                            , map: map
-                        });
-                        infowindow.setContent("You are here!");
-                        infowindow.open(map, marker);
-                        map.panTo(lecturePosition);
-                        map.setZoom(18)
-                    }
-                </script>
-
                 <script src="https://maps.googleapis.com/maps/api/js?v=3&callback=initMap" async defer></script>
 </body>
 
