@@ -141,7 +141,7 @@ function LocationWeatherCache()
             {
                 // The forecast for this location & time is already available
                 
-                var forecastData = currentLocation.forecasts.forecastKey;
+                var forecastData = currentLocation.forecasts[forecastKey];
                 callback(index, forecastData);
             }
         else
@@ -194,7 +194,7 @@ function LocationWeatherCache()
         
         // Calls the appropriate callback function
         var callback = callbacks[forecastKey];
-        callback(currentLocationIndex, forecastData);
+        callback(currentLocationIndex, forecastKey, forecastData);
     };
 
     // PRIVATE METHODS:
@@ -238,7 +238,7 @@ function loadLocations()
     
     // Check if app data is present in local storage
     if (lwcJSON)
-    {A
+    {
         var lwcPDO = JSON.parse(lwcJSON);
         locationWeatherCache.initialiseFromPDO(lwcPDO);
     }
