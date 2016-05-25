@@ -1,6 +1,85 @@
 html, body { 
     height: 100%; 
     margin: 0; 
-    padding: 0; 
+    padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.location-summary {
+    margin: 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.8);
+}
+
+.top {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    /* FLEX STUFF */
+    justify-content: space-between;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: #000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.temp-low {
+    height: 50px;
+    margin: 5px 2.5px 5px 5px;
+    color: black;
+    text-align: center;
+    line-height: 50px;
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    font-size: 30px;
+    /* FLEX STUFF */
+    width: 30px;
+    flex-grow: 1;
+}
+
+.icon-holder {
+    height: 50px;
+    margin: 5px 2.5px 5px 2.5px;
+    text-align: center;
+    line-height: 50px;
+    /* FLEX STUFF */
+    flex-grow: 2;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.temp-high {
+    height: 50px;
+    margin: 5px 5px 5px 2.5px;
+    color: black;
+    text-align: center;
+    line-height: 50px;
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    font-size: 30px;
+    /* FLEX STUFF */
+    width: 30px;
+    flex-grow: 1;
+}
+
+.bottom {
+    height: 30px;
+    background: #e1e8f0;
+    text-align: center;
+    line-height: 30px;
+    font-family: 'Droid Sans', Helvetica, Arial, sans-serif;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: #000;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
