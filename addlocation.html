@@ -48,15 +48,18 @@
                         <!-- Simple Textfield -->   
 <form action="#">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="label-input" onkeyup="geocodeAddress()">
-    <label class="mdl-textfield__label" for="sample3">Enter Location</label>
+    <input class="mdl-textfield__input" type="text" id="address" onkeyup="geocodeAddress()">
+    <label class="mdl-textfield__label" for="sample3">Enter Location...</label>
   </div>
 </form>
+                        
+<input id="submit" type="button" value="Geocode">
+
 
 <form action="#">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <input class="mdl-textfield__input" type="text" id="location-input">
-    <label class="mdl-textfield__label" for="sample1">Location...</label>
+    <label class="mdl-textfield__label" for="sample1">Enter Nickname...</label>
   </div>
 </form>
 
@@ -64,6 +67,7 @@
 <button class="mdl-button mdl-js-button mdl-button--raised" onclick="storeLocation()">
 Store
 </button>
+                        
 
             </main>    
         </div>
