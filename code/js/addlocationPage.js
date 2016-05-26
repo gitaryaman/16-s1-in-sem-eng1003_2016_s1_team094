@@ -1,37 +1,100 @@
+// Code for the Add Location page.
 
-//Use of geolocation
-//Requires consent for location sharing. Error will appear if you didn't allow permission 
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 6
-  });
-  var infoWindow = new google.maps.InfoWindow({map: map});
+window.addEventListener("load", pageFullyLoaded, false);
 
-  // Try HTML5 geolocation.
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
+var map;
+var geocoder;
+var mapRef;
+var changeCenterTimeout;
 
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      map.setCenter(pos);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
+function pageFullyLoaded(e)
+{   
+    mapRef = document.getElementById('map');
+    initMap();
+}
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
+function initMap()
+{
+    var monashClaytonPosition = {lat: -37.912, lng: 145.131};
+    
+    var mapOptions = {
+        center: monashClaytonPosition,
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    
+    map = new google.maps.Map(mapRef, mapOptions);
+    geocoder = new google.maps.Geocoder;
+}
+
+
+function textFieldChanged() {
+    var textInput = document.getElementById('address').value;
+    console.log(textInput);
+    var geocoderRequest = {
+        "address": textInput
+    };
+    
+    if (changeCenterTimeout === undefined)
+        {
+            changeCenterTimeout = setTimeout(function(){
+                geocoder.geocode(geocoderRequest, changeMapCenter);
+            }, 200);
+        }
+    else {
+        clearTimeout(changeCenterTimeout);
+        changeCenterTimeout = setTimeout(function(){
+                geocoder.geocode(geocoderRequest, changeMapCenter);
+            }, 200);
     }
 }
+
+function changeMapCenter(geocoderResult, geocoderStatus)
+{
+    if (geocoderResult.length > 0)
+        {
+            var latitude = geocoderResult[0].geometry.location.lat();
+            var longitude = geocoderResult[0].geometry.location.lng();
+
+            var coordinates = {
+                lat: latitude,
+                lng: longitude
+            };
+            
+            map.setCenter(coordinates);
+        }
+}
+
+function storeLocation()
+{
+    var nickname = document.getElementById("nickname").value;
+    var coordinates = map.getCenter();
+    
+    var latitude = String(coordinates.lat());
+    var longitude = String(coordinates.lng());
+    
+    console.log(latitude);
+    console.log(longitude);
+    
+    locationWeatherCache.addLocation(latitude, longitude, nickname);
+    
+    window.location.href = "index.html";
+} 
+
+ /*function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+*/
+
 

@@ -1,3 +1,6 @@
+/* NOTE: This file also contains code for the Geocoding API */
+
+
 /* GLOBAL VARIABLES */
 
 var locationWeatherCache = new LocationWeatherCache();
@@ -5,7 +8,8 @@ var locationWeatherCache = new LocationWeatherCache();
 
 /* CONSTANTS */
 
-var API_KEY = "fe4c2e484723f0c51b0f6783375f171f";
+var FORECAST_API_KEY = "fe4c2e484723f0c51b0f6783375f171f";
+var GEOCODING_API_KEY = "AIzaSyDNcd-DNejYk0kqmHcRYgJEz1cJbd4OLsk";
 var STORAGE_KEY = "weatherApp"; // Prefix to use for Local Storage
 
 
@@ -141,14 +145,14 @@ function LocationWeatherCache()
             {
                 // The forecast for this location & time is already available
                 
-                var forecastData = currentLocation.forecasts.forecastKey;
+                var forecastData = currentLocation.forecasts[forecastKey];
                 callback(index, forecastData);
             }
         else
             {
                 callbacks[forecastKey] = callback;
                 
-                var URL = "https://api.forecast.io/forecast/" + API_KEY + "/" +
+                var URL = "https://api.forecast.io/forecast/" + FORECAST_API_KEY + "/" +
                     currentLocation.latitude + "," +
                     currentLocation.longitude + "," +
                     date.forecastDateString() + "?" +
@@ -238,7 +242,7 @@ function loadLocations()
     
     // Check if app data is present in local storage
     if (lwcJSON)
-    {A
+    {
         var lwcPDO = JSON.parse(lwcJSON);
         locationWeatherCache.initialiseFromPDO(lwcPDO);
     }
@@ -250,5 +254,4 @@ function saveLocations()
     var lwcJSON = JSON.stringify(locationWeatherCache);
     localStorage.setItem(STORAGE_KEY, lwcJSON);
 }
-
 
