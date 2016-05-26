@@ -6,7 +6,7 @@ loadLocations();
 var selectedLocation = locationWeatherCache.locationAtIndex
 
 // Navigation
-var STORAGE_KEY = "weatherApp"
+var APP_PREFIX = "weatherApp"
 var locationIndex = localStorage.getItem(APP_PREFIX + "-selectedLocation");
 //var locationIndex = localStorage.getItem(STORAGE_KEY + "-selectedLocation");
 if (locationIndex !== null) {
@@ -31,13 +31,13 @@ if (!document.getElementById("mapsapi")) {
 var map;
 var infoWindow;
 
-document.getElementById("outputArea").innerHTML = '<div id="map" style="height: 400px; width: 100%;">Loading map...</div>';
+//document.getElementById("outputArea").innerHTML = '<div id="map" style="height: 400px; width: 100%;">Loading map...</div>';
 //document.getElementById("headerBarTitle").textContent = "tedt";
 // Give maps API time to load, then initialise map.
 
 setTimeout(initMap, 1000);
 
-setTimeout(youAreHere, 3000);
+//setTimeout(youAreHere, 3000);
 
 
 function initMap() {
@@ -60,7 +60,7 @@ function initMap() {
         , map: map
     });
     
-    infowindow.setContent(locationNames[locationIndex]);
+    infowindow.setContent(selectedLocation);
     infowindow.open(map, marker);
 }
 
@@ -93,11 +93,11 @@ function forecastAPIDate(value) {
 ///////////////////////////////////////////////////////WEATHER INFORMATION///////////////////////////////////////////////////////////////////////
 
 function getWeather(value){
-    locationWeatherCache.getWeatherAtIndexForDate(locationIndex, sliderDate(value), updateAPI);
+    locationWeatherCache.getWeatherAtIndexForDate(locationIndex, sliderDate(value), updateDOM);
 }
-
 var key = num.toString(selectedLocation.latitude) + "," + num.toString(selectedLocation.longitude) + "," + forecastAPIDate(value)
 var locationWeather = selectedLocation.forecasts[key]
+
 
 //creates a DOM instance with all information added to the html file
 function updateDOM(locationIndex, locationWeather){
