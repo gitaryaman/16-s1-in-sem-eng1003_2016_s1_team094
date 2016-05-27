@@ -26,7 +26,7 @@
 
 
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title" id="headerBarTitle">Nickname</span>
+                <span class="mdl-layout-title" id="headerBarTitle">Melbourne</span>
 
             </div>
 
@@ -51,7 +51,7 @@
                         <meta name="mobile-web-app-capable" content="yes" />
                         <style>
                             #map {
-                                width: 325px;
+                                width: 330px;
                                 height: 300px;
                             }
                         </style>
@@ -61,7 +61,7 @@
 
                     <main class="mdl-layout__content">
                         <!-- Main page content here: -->
-                        <body>
+                        <body onload="sliderCallback(30); getWeather(30); updateDOM()">
                         <div id="map"></div>
                         <p>
                             <div id="date">Date:
@@ -69,19 +69,18 @@
                             <br>
                             <!-- Slider with Starting Value -->
                             <p style="width:100%">
-                                <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1" oninput="sliderCallback(this.value); getWeather(value)">
+                                <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="30" value="30" step="1"  oninput="sliderCallback(this.value); getWeather(this.value);">
                             </p>
-                            <script>"updateDOM()"
-                            </script>
-                            <div id="currentConditions">Current Conditions:</div>
+    
+                            <div id="currentConditions">Summary: </div>
                             <br>
                             <div id="maxTemp">Maximum Temperature: &#8451</div>
                             <br>
                             <div id="minTemp">Minimum Temperature: &#8451</div>
                             <br>
-                            <div id="humidity">Current Humidity: %</div>
+                            <div id="humidity">Humidity: %</div>
                             <br>
-                            <div id="windSpeed">Current Wind Speed: km/h
+                            <div id="windSpeed">Wind Speed: km/h
                             </div>
                             <br>
                             <div>
